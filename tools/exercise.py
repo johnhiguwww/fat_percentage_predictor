@@ -42,11 +42,11 @@ class ExercisePrediction:
         # Escolher o modelo com base no gênero
         if self.exercise_data['gender'].lower() == 'male':
             #model_male = joblib.load('./modelo/modelo_male.pkl')
-            model = joblib.load('C:\\Users\\higor\\OneDrive\\Área de Trabalho\\modelo_dados\\modelo\\model_male.pkl')
+            model = joblib.load('/modelo/model_male.pkl')
             prediction = model.predict([prepared_data])
             return prediction[0]
         elif self.exercise_data['gender'].lower() == 'female':
-            model = joblib.load('C:\\Users\\higor\\OneDrive\\Área de Trabalho\\modelo_dados\\modelo\\model_female.pkl')
+            model = joblib.load('./modelo/model_female.pkl')
 
             prediction = model.predict([prepared_data])
             return prediction[0]

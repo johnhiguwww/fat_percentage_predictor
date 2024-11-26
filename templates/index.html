@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimativa de Gordura Gasta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('https://avatarfiles.alphacoders.com/112/thumb-1920-112470.jpg'); /* Caminho relativo para a imagem */
+            background-size: cover; /* Ajusta para cobrir toda a tela */
+            background-repeat: no-repeat; /* Impede a repetição */
+            background-attachment: fixed; /* Faz a imagem rolar junto com a página */
+            background-position: center; /* Centraliza a imagem */
+            font-family: Arial, sans-serif; /* Define uma fonte padrão */
+            color: white; /* Cor do texto para contraste */
+        }
+        .container {
+            max-width: 500px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input, select, button {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #28a745;
+        }
+        .error {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Estimativa de Gordura Gasta</h1>
+        <form action="/estimate" method="POST">
+            <label for="duration">Duração do Exercício (min):</label>
+            <input type="number" id="duration" name="duration" placeholder="Ex: 30" required>
+        
+            <label for="workout_type">Tipo de Exercício:</label>
+            <select id="workout_type" name="workout_type" required>
+                <option value="" disabled selected>Selecione o tipo de exercício</option>
+                <option value="Cardio">Cardio</option>
+                <option value="Strength">Força</option>
+                <option value="Yoga">Yoga</option>
+                <option value="HIIT">HIIT</option>
+            </select>
+        
+            <label for="gender">Gênero:</label>
+            <select id="gender" name="gender" required>
+                <option value="" disabled selected>Selecione o gênero</option>
+                <option value="male">Masculino</option>
+                <option value="female">Feminino</option>
+            </select>
+        
+            <button type="submit">Calcular</button>
+        </form>
+
+        <!-- Exibe o resultado ou erro -->
+        {% if result %}
+        <div class="result">Resultado: {{ result }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
